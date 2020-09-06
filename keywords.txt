@@ -1,0 +1,43 @@
+#######################################
+# Syntax Coloring Map For the
+# PCA9685_Driver library
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+PCA9685_Driver	KEYWORD1
+EOutputType	KEYWORD1
+EAddressType	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin	KEYWORD2
+restart	KEYWORD2
+sleep	KEYWORD2
+wakeUp	KEYWORD2
+setMode1	KEYWORD2
+setMode2	KEYWORD2
+readRegister	KEYWORD2
+writeRegister	KEYWORD2
+setExtClock	KEYWORD2
+setPWMFrequency	KEYWORD2
+getPWMFrequency	KEYWORD2
+setOutputType	KEYWORD2
+setPWMOutput	KEYWORD2
+setAllPWMOutputs	KEYWORD2
+getOscillFrequency	KEYWORD2
+setOscillFrequency	KEYWORD2
+
+#######################################
+# Structures (KEYWORD3)
+#######################################
+
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+

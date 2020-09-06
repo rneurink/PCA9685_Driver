@@ -12,14 +12,14 @@
 #include "PCA9685_Driver.h"
 #include <Wire.h>
 
-#define ENABLE_DEBUG_OUTPUT
+//#define ENABLE_DEBUG_OUTPUT
 
 /**
  * @brief Construct a new pca9685 driver::pca9685 driver object
  * 
  */
 PCA9685_Driver::PCA9685_Driver()
-    : _i2c_address(PCA9685_I2C_ADDR), _i2c(&Wire) {}
+    : _i2c(&Wire), _i2c_address(PCA9685_I2C_ADDR) {}
 
 /**
  * @brief Construct a new pca9685 driver::pca9685 driver object
@@ -27,7 +27,7 @@ PCA9685_Driver::PCA9685_Driver()
  * @param i2c_address The address to talk to the chip. Default is 0x40 (7 bit) or 0x80 (8 bit)
  */
 PCA9685_Driver::PCA9685_Driver(uint8_t i2c_address)
-    : _i2c_address(i2c_address), _i2c(&Wire) {}
+    : _i2c(&Wire), _i2c_address(i2c_address) {}
 
 /**
  * @brief Construct a new pca9685 driver::pca9685 driver object
@@ -36,7 +36,7 @@ PCA9685_Driver::PCA9685_Driver(uint8_t i2c_address)
  * @param i2c The reference to the I2C TwoWire hardware abstraction layer
  */
 PCA9685_Driver::PCA9685_Driver(uint8_t i2c_address, TwoWire &i2c)
-    : _i2c_address(i2c_address), _i2c(&i2c) {}
+    : _i2c(&i2c), _i2c_address(i2c_address) {}
 
 /**
  * @brief Initializes the I2C HAL and the PCA9685
@@ -255,11 +255,11 @@ void PCA9685_Driver::setOutputType(EOutputType type, EAddressType addressType) {
     switch (type)
     {
     case EOutputType::TotemPole :
-        mode | MODE2_OUTDRV;
+        mode = mode | MODE2_OUTDRV;
         break;
     case EOutputType::OpenDrain :
     default:
-        mode & ~MODE2_OUTDRV;
+        mode = mode & ~MODE2_OUTDRV;
         break;
     }
     writeByte(addressType, PCA9685_MODE2, mode);
